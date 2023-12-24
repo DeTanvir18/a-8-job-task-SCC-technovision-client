@@ -11,7 +11,7 @@ const Footer = () => {
                     </div>
                     <div className='flex flex-col md:flex-row gap-4 lg:gap-10'>
                         <div>
-                            <Link to="/"><h2 className="text-xl font-semibold">SCC Technovision Inc.</h2></Link>
+                            <Link to="/"><h2 className="text-xl font-semibold">Task Management Inc.</h2></Link>
                             <div className="flex text-sm font-bold mb-2">
                                 <Link to="/login"><button className="underline me-1">Log In</button></Link>
                                 <p>/</p>
@@ -22,7 +22,7 @@ const Footer = () => {
                         <div>
                             <ul className="text-sm font-medium">
                                 <li>Why Us?</li>
-                                <li>Tech Services</li>
+                                <li>Task Management</li>
                                 <li>Terms</li>
                                 <li>Contact</li>
                                 <li>Social Media</li>
@@ -38,8 +38,8 @@ const Footer = () => {
                         <div>
                             <img src="https://i.postimg.cc/hG7v74Bv/Frame-3.png" alt="" />
                             <div>
-                                <p>scc.techno.vision@gmail.com</p>
-                                <p>technovision.scc@gmail.com</p>
+                                <p>task.manage@gmail.com</p>
+                                <p>manage.task@gmail.com</p>
                             </div>
                         </div>
                         <div>
@@ -66,13 +66,13 @@ const Footer = () => {
                                     frameBorder="0"
                                     style={{ border: 0 }}
 
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233378.83731996172!2d90.2297421052546!3d23.941184441795553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c65555555555%3A0x74d4cf20f7636c4f!2sTECHNOVISION!5e0!3m2!1sen!2sbd!4v1703420947054!5m2!1sen!2sbd"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.0896339842507!2d90.39648081113624!3d23.779822287556755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c76ebac68841%3A0x2a5036aeeee81a00!2sManagement%20Information%20System%20(MIS)%2C%20DGHS!5e0!3m2!1sen!2sbd!4v1703443944869!5m2!1sen!2sbd"
                                     allowFullScreen
                                 ></iframe>
                             </div>
                             <div>
-                                <p className="font-bold">SCC Technovision Inc.<br />Providing reliable service since 2015</p>
-                                <p className="font-semibold">© 2015 - 23 SCC Technovision Inc. All Rights Reserved.</p>
+                                <p className="font-bold">Task Mangement Inc.<br />Providing reliable service since 2015</p>
+                                <p className="font-semibold">© 2015 - 23 Task Mangement Inc. All Rights Reserved.</p>
                             </div>
                         </div>
                     </div>
