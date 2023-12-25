@@ -1,69 +1,72 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../providers/AuthProvider";
+import { Navigate, useLoaderData } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
+import { BiBookAdd } from "react-icons/bi";
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle";
-import { FaTasks } from "react-icons/fa";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
-
-const AddTask = () => {
-    const { user } = useContext(AuthContext);
+const UpdateTask = () => {
+    const { _id, title, priority, status, deadline, description } = useLoaderData();
     const { register, handleSubmit, reset } = useForm();
+
     const axiosPublic = useAxiosPublic();
 
-
     const onSubmit = async (data) => {
-        const newTask = {
+        const task = {
             title: data.title,
-            email: user?.email,
-            description: data.description,
-            status: "to-do",
-            deadline: data.date,
             priority: data.priority,
+            status: data.status,
+            deadline: data.deadline,
+            description: data.description,
         }
-        const newTaskRes = await axiosPublic.post('/tasks', newTask);
-        if (newTaskRes.data.insertedId) {
-            reset();
+       // now send the task data to the server with the image url
+        const taskRes = await axiosPublic.patch(`/tasks/update/${_id}`, task);
+        if (taskRes.data.modifiedCount > 0) {
             Swal.fire({
                 position: "center",
                 icon: "success",
-                title: `${data.title} is added to the tasks.`,
+                title: `${title} is Updated Successfully.`,
                 showConfirmButton: false,
                 timer: 1500
             });
         }
+        reset();
+        Navigate('/dashboard');
     }
 
 
+
+
+
     return (
-        <div className="bg-slate-400 min-h-screen mb-16">
+        <div className="bg-blue-200 min-h-screen mb-16">
             <Helmet>
-                <title>Dash | New Task</title>
+                <title>Dash | Update Task</title>
             </Helmet>
             <div className="py-4 px-6 rounded-lg">
-                <SectionTitle heading="Add New Task?" ></SectionTitle>
+                <SectionTitle heading="Update Your Task?" ></SectionTitle>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col justify-center items-center lg:w-1/3 w-full md:w-2/3 mx-auto gap-2">
                         {/* Title */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full my-2">
                             <label className="label">
                                 <span className="label-text">Task Title</span>
                             </label>
                             <input
                                 type="text"
                                 placeholder="Task Title"
+                                defaultValue={title}
                                 {...register('title', { required: true })}
                                 required
                                 className="input input-bordered w-full" />
                         </div>
                         {/* Priority */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full my-2">
                             <label className="label">
                                 <span className="label-text">Priority</span>
                             </label>
-                            <select defaultValue="default" {...register('priority', { required: true })}
+                            <select defaultValue={priority} {...register('priority', { required: true })}
                                 className="select select-bordered w-full">
                                 <option disabled value="default">Choose Your Priority</option>
                                 <option value="Low">Low</option>
@@ -71,14 +74,28 @@ const AddTask = () => {
                                 <option value="High">High</option>
                             </select>
                         </div>
+                        {/* Status */}
+                        <div className="form-control w-full my-2">
+                            <label className="label">
+                                <span className="label-text">Status</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Task Title"
+                                defaultValue={status}
+                                {...register('status', { required: true })}
+                                required
+                                className="input input-bordered w-full" />
+                        </div>
                         {/* Deadline */}
-                        <div className="form-control w-full my-6">
+                        <div className="form-control w-full my-2">
                             <label className="label">
                                 <span className="label-text">Deadline</span>
                             </label>
                             <input
                                 type="date"
                                 placeholder="Deadline"
+                                defaultValue={deadline}
                                 {...register('date', { required: true })}
                                 required
                                 className="input input-bordered w-full" />
@@ -88,12 +105,12 @@ const AddTask = () => {
                             <label className="label">
                                 <span className="label-text">Task Description</span>
                             </label>
-                            <textarea {...register('description')} className="textarea textarea-bordered h-24" placeholder="Type Your Task Description here"></textarea>
+                            <textarea {...register('description')} className="textarea textarea-bordered h-24" placeholder="Type Your Task Description here" defaultValue={description}></textarea>
                         </div>
                     </div>
                     <div className="text-center mt-2 mb-12 text-white">
-                        <button className="btn btn-ghost w-full md:w-1/3 lg:1/4">
-                            <FaTasks className="ml-4"></FaTasks> Add Task
+                        <button className="btn btn-primary w-full md:w-1/3 lg:1/4">
+                            <BiBookAdd className="ml-4"></BiBookAdd> Update Task
                         </button>
                     </div>
                 </form>
@@ -102,4 +119,4 @@ const AddTask = () => {
     );
 };
 
-export default AddTask;
+export default UpdateTask;

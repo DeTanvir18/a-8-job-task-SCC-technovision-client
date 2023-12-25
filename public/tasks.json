@@ -1,0 +1,99 @@
+[
+    {
+      "title": "Research Paper",
+      "email": "tanvir@admin.com",
+      "priority": "High",
+      "status": "ongoing",
+      "description": "Conduct in-depth research and write a comprehensive research paper on a relevant and challenging topic in the field of study. Explore various sources, analyze data, and present findings in a clear and organized manner.",
+      "deadline": "2023-01-15"
+    },
+    {
+      "title": "Math Assignment",
+      "email": "tanvir@admin.com",
+      "priority": "Moderate",
+      "status": "to-do",
+      "description": "Complete a set of challenging math problems covering various topics such as algebra, calculus, and geometry. Ensure accuracy and provide detailed solutions for each problem.",
+      "deadline": "2023-01-20"
+    },
+    {
+      "title": "Literature Review",
+      "email": "tanvir@admin.com",
+      "priority": "Low",
+      "status": "completed",
+      "description": "Summarize and critically analyze key points from a selection of literature sources related to a specific subject. Provide insights into the current state of research and highlight gaps for future exploration.",
+      "deadline": "2023-01-25"
+    },
+    {
+      "title": "Group Project",
+      "email": "tanvir@admin.com",
+      "priority": "Moderate",
+      "status": "to-do",
+      "description": "Collaborate with team members on a comprehensive group project. Coordinate tasks, contribute individual expertise, and deliver a cohesive and well-documented final presentation.",
+      "deadline": "2023-02-05"
+    },
+    {
+      "title": "Software Development",
+      "email": "tanvir@admin.com",
+      "priority": "High",
+      "status": "ongoing",
+      "description": "Lead the development of a new software feature, including requirements analysis, design, coding, testing, and documentation. Collaborate with cross-functional teams to ensure successful implementation.",
+      "deadline": "2023-02-10"
+    },
+    {
+      "title": "System Maintenance",
+      "email": "tanvir@admin.com",
+      "priority": "Moderate",
+      "status": "completed",
+      "description": "Perform routine system maintenance tasks, including software updates, security patches, and performance optimization. Document all changes made and ensure minimal downtime.",
+      "deadline": "2023-02-15"
+    },
+    {
+      "title": "Code Review",
+      "email": "tanvir@admin.com",
+      "priority": "Low",
+      "status": "to-do",
+      "description": "Conduct a thorough code review of changes made by team members. Provide constructive feedback, identify potential issues, and ensure adherence to coding standards and best practices.",
+      "deadline": "2023-02-20"
+    },
+    {
+      "title": "Hardware Upgrade",
+      "email": "tanvir@admin.com",
+      "priority": "Moderate",
+      "status": "to-do",
+      "description": "Plan and execute hardware upgrades as needed, ensuring compatibility and minimal disruption. Test and validate the upgraded components to guarantee optimal system performance.",
+      "deadline": "2023-02-28"
+    },
+    {
+      "title": "Financial Report",
+      "email": "tanvir@admin.com",
+      "priority": "High",
+      "status": "ongoing",
+      "description": "Prepare a comprehensive financial report, covering income statements, balance sheets, and cash flow statements. Analyze financial trends, identify key performance indicators, and provide strategic insights.",
+      "deadline": "2023-03-05"
+    },
+    {
+      "title": "Client Meeting",
+      "email": "tanvir@admin.com",
+      "priority": "Moderate",
+      "status": "to-do",
+      "description": "Schedule and prepare for an upcoming client meeting. Develop an agenda, gather relevant data, and be prepared to address client inquiries and concerns. Aim to strengthen client relationships.",
+      "deadline": "2023-03-10"
+    },
+    {
+      "title": "Risk Assessment",
+      "email": "tanvir@admin.com",
+      "priority": "Low",
+      "status": "completed",
+      "description": "Conduct a thorough risk assessment for investment portfolios. Evaluate market conditions, regulatory changes, and economic factors to identify potential risks and recommend mitigation strategies.",
+      "deadline": "2023-03-15"
+    },
+    {
+      "title": "Loan Approval",
+      "email": "tanvir@admin.com",
+      "priority": "Moderate",
+      "status": "to-do",
+      "description": "Review and approve loan applications, ensuring compliance with established policies. Assess the financial viability of applicants and communicate decisions promptly. Provide clear and transparent feedback.",
+      "deadline": "2023-03-20"
+    }
+  ]
+  

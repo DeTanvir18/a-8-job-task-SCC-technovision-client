@@ -72,8 +72,9 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="flex-1">
-                    <div className="w-4/12 mx-auto mb-3 md:my-16 text-center">
+                    <div className="w-4/12 mx-auto mb-3 md:my-8 text-center">
                         <h3 className="md:text-5xl text-[#286e74] font-bold md:border-b-4 py-6">Dashboard</h3>
+                        <p className="text-2xl">Welcome to the Dashboard</p>
                     </div>
                     <Outlet></Outlet>
                 </div>
