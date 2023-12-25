@@ -5,13 +5,10 @@ import { FaTasks } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { motion } from 'framer-motion';
-import useTasks from "../hooks/useTasks";
 
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
-    const [ , tasks] = useTasks();
-    const myTasks = tasks.filter(task => task.email === user.email);
 
     return (
         <div>
@@ -33,7 +30,7 @@ const Dashboard = () => {
                                     <h3><span className="font-bold"></span>{user?.email}</h3>
                                 </div>
                                 <div className="space-y-1">
-                                    <h3><span className="font-bold">Total Tasks: </span>{myTasks.length}</h3>
+                                    {/* <h3><span className="font-bold">Total Tasks: </span>{myTasks.length}</h3> */}
                                 </div>
                                 <div className="space-y-1">
                                     <span className="flex items-center font-semibold text-md py-1 rounded-md"><FaIdBadge />  General</span>

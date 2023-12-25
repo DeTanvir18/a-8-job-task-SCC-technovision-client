@@ -15,10 +15,10 @@ const MyTasks = () => {
     const { user } = useContext(AuthContext);
     const [refetch, tasks] = useTasks();
     const axiosPublic = useAxiosPublic();
-    const myTasks = tasks.filter(task => task.email === user.email);
-    const toDo = myTasks.filter(task => task.status === "to-do");
-    const ongoing = myTasks.filter(task => task.status === "ongoing");
-    const completed = myTasks.filter(task => task.status === "completed");
+    const myTasks = tasks.filter(task => task?.email === user?.email);
+    const toDo = myTasks.filter(task => task?.status === "to-do");
+    const ongoing = myTasks.filter(task => task?.status === "ongoing");
+    const completed = myTasks.filter(task => task?.status === "completed");
 
 
 

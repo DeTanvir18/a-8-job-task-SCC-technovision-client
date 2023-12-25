@@ -4,15 +4,12 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
-import useTasks from "../../../hooks/useTasks";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
-    const [ , tasks] = useTasks();
-    const myTasks = tasks.filter(task => task.email === user.email);
 
 
 
@@ -36,7 +33,7 @@ const Navbar = () => {
                 {
                     user &&
                     <NavLink spy={true} smooth={true} to="/dashboard">
-                        <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard<span className="text-pink-500"> +{myTasks.length}</span></li>
+                        <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard</li>
                     </NavLink>
                 }
                 {
@@ -76,7 +73,7 @@ const Navbar = () => {
                             {
                                 user &&
                                 <NavLink spy={true} smooth={true} to="/dashboard">
-                                    <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard<span className="text-pink-500"> +{myTasks.length}</span></li>
+                                    <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard</li>
                                 </NavLink>
                             }
                             {
