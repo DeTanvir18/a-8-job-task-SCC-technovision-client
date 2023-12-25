@@ -60,15 +60,15 @@ const Login = () => {
                 <title>M-Task | Login</title>
             </Helmet>
 
-            <div className="min-h-screen bg-base-200 mt-8 lg:py-48" style={{ backgroundImage: `url("https://i.ibb.co/52mNNP9/vik7fgnk6iwb50vfgssyyfa7poutctycxhyvnqgbzrjtqwhesbczznkbqctjidpx.jpg")` }}>
+            <div className="min-h-screen bg-base-200 lg:py-48 bg-no-repeat bg-cover" style={{ backgroundImage: `url("https://i.ibb.co/hdH5FbJ/desktop-wallpaper-pulsar-220-login-page.jpg")` }}>
                 <div className="hero-content lg:ms-24">
                     <div className="card md:w-1/2 max-w-md shadow-2xl bg-transparent mt-8">
-                        <h1 className="text-5xl font-bold my-2 mx-4 text-pink-800 mt-12">Please Join Us!</h1>
+                        <h1 className="text-5xl text-white font-bold my-2 mx-4 mt-12">Please Join Us!</h1>
                         <form onSubmit={handleSubmit(handleLogIn)} className="card shadow-2xl">
                             <div className="card-body">
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Email</span>
+                                        <span className="label-text text-white">Email</span>
                                     </label>
                                     <input type="emaill" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                                 </div>
@@ -82,7 +82,7 @@ const Login = () => {
                                     {errors.password?.type === 'minLength' && <p className="text-red-600 font-semibold py-1">Password must be at least 6 characters</p>}
                                     {errors.password?.type === 'pattern' && <p className="text-red-600 font-semibold py-1">Password must contain at least one uppercase, one lowercase, one number and one special character</p>}
                                     <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                        <a href="#" className="label-text-alt text-white link link-hover">Forgot password?</a>
                                     </label>
                                 </div>
                                 <div className="form-control mt-6">
@@ -95,7 +95,7 @@ const Login = () => {
                             <div className="w-1/2 mx-auto">
                                 <SocialLogin task='Login'></SocialLogin>
                             </div>
-                            <p className="text-center text-[#7f2869] my-2"><small>New to Fresh Foods? <Link to="/signup" className="font-bold">Create an account</Link></small></p>
+                            <p className="text-center text-md text-white my-2"><small>New to Fresh Foods? <Link to="/signup" className="font-bold underline">Create an account</Link></small></p>
                         </div>
                     </div>
                 </div>

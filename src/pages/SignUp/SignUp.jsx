@@ -136,7 +136,7 @@ const SignUp = () => {
                             <div className="w-1/2 mx-auto">
                                 <SocialLogin task='Sign Up'></SocialLogin>
                             </div>
-                            <p className="text-center text-[#6e2a65] my-2"><small>Already conneted? <Link to="/login" className="font-bold">Login here</Link></small></p>
+                            <p className="text-center text-[#6e2a65] my-2"><small>Already conneted? <Link to="/login" className="font-bold underline">Login here</Link></small></p>
                         </div>
                     </div>
                 </div>
