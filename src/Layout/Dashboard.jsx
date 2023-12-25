@@ -13,8 +13,8 @@ const Dashboard = () => {
                 <title>Dashboard</title>
             </Helmet>
             <div className="flex">
-                <div>
-                    <div className="w-64 min-h-screen bg-sky-400">
+                <div className="min-h-screen bg-sky-400">
+                    <div className="w-64">
                         <div className="flex flex-col justify-center items-center text-white mx-0 lg:mx-2 mt-5 space-y-3 p-2 md:p-4">
                             <div>
                                 <figure><img className="w-40 rounded-full lg:rounded-full" src={user?.photoURL} alt="user-img" /></figure>
@@ -44,9 +44,9 @@ const Dashboard = () => {
                                         User Home</NavLink>
                                 </li> */}
                                     <li>
-                                        <NavLink to="/dashboard/toDo">
+                                        <NavLink to="/dashboard/myTask">
                                             <FaTasks />
-                                            To Do</NavLink>
+                                            My Tasks</NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/dashboard/addTask">
@@ -71,7 +71,7 @@ const Dashboard = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="flex-1 p-8">
+                <div className="flex-1">
                     <div className="w-4/12 mx-auto mb-3 md:my-16 text-center">
                         <h3 className="md:text-5xl text-[#286e74] font-bold md:border-b-4 py-6">Dashboard</h3>
                     </div>

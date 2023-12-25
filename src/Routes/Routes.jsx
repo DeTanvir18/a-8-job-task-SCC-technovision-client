@@ -6,8 +6,8 @@ import SignUp from "../pages/SignUp/SignUp";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
-import ToDo from "../pages/Dashboard/ToDo/ToDo";
 import AddTask from "../pages/Dashboard/AddTask/AddTask";
+import MyTasks from "../pages/Dashboard/MyTasks/MyTasks";
 
 const router = createBrowserRouter([
     {
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
-                path: '/dashboard/toDo',
-                element: <ToDo></ToDo>
+                path: '/dashboard/myTask',
+                element: <MyTasks></MyTasks>
             },
             {
                 path: '/dashboard/addTask',
