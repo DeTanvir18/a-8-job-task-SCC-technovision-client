@@ -4,6 +4,8 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FaTasks } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { motion } from 'framer-motion';
+
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
@@ -72,10 +74,16 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="flex-1">
-                    <div className="w-4/12 mx-auto mb-3 md:my-8 text-center">
-                        <h3 className="md:text-5xl text-[#286e74] font-bold md:border-b-4 py-6">Dashboard</h3>
-                        <p className="text-2xl">Welcome to the Dashboard</p>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 2 }}
+                        transition={{ duration: 5 }}
+                    >
+                        <div className="w-4/12 mx-auto mb-3 md:my-8 text-center">
+                            <h3 className="md:text-5xl text-[#286e74] font-bold md:border-b-4 py-6">Dashboard</h3>
+                            <p className="text-2xl">Welcome to the Dashboard</p>
+                        </div>
+                    </motion.div>
                     <Outlet></Outlet>
                 </div>
             </div>
