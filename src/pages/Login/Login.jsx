@@ -57,7 +57,7 @@ const Login = () => {
     return (
         <div>
             <Helmet>
-                <title>SCC Tech | Login</title>
+                <title>M-Task | Login</title>
             </Helmet>
 
             <div className="min-h-screen bg-base-200 mt-8 lg:py-48" style={{ backgroundImage: `url("https://i.ibb.co/52mNNP9/vik7fgnk6iwb50vfgssyyfa7poutctycxhyvnqgbzrjtqwhesbczznkbqctjidpx.jpg")` }}>

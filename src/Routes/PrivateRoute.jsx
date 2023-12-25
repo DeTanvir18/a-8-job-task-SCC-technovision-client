@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import { BallTriangle } from "react-loader-spinner";
 
 
 const PrivateRoute = ({children}) => {
@@ -9,21 +10,19 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     if (loading) {
-        return <div className="flex flex-col justify-center items-center">
-            <div className='text-center my-12'>
-                <span className="loading loading-spinner text-primary"></span>
-                <span className="loading loading-spinner text-secondary"></span>
-                <span className="loading loading-spinner text-accent"></span>
-                <span className="loading loading-spinner text-neutral"></span>
-                <span className="loading loading-spinner text-info"></span>
-                <span className="loading loading-spinner text-success"></span>
-                <span className="loading loading-spinner text-warning"></span>
-                <span className="loading loading-spinner text-error"></span>
-            </div>
-            <progress className="progress w-56"></progress>
-        </div>
+        return <div className="bg-black h-screen flex justify-center items-center">
+        <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#fff"
+            ariaLabel="ball-triangle-loading"
+            wrapperClass={{}}
+            wrapperStyle=""
+            visible={true}
+        />
+    </div>
     }
-
     if (user) {
         return children;
     }

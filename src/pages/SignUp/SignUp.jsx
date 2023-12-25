@@ -74,7 +74,7 @@ const SignUp = () => {
     return (
         <>
             <Helmet>
-                <title>SCC Tech | Sign Up</title>
+                <title>M-Task | Sign Up</title>
             </Helmet>
             <div className="min-h-screen bg-base-200 lg:py-40" style={{ backgroundImage: `url("https://i.ibb.co/5kjwXJt/242389041.jpg")` }}>
                 <div className="hero-content lg:ms-24">

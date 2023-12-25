@@ -2,7 +2,7 @@
 ***
 I have made this react project for Task Management. This is a task management site for the company "Task Mangement Inc". Of course, it's dynamic. A visitor can:
 * See his tasks that he added 
-* The tasks are divided in
+* The tasks are divided into 3 categories 
 
 
 ## The Server
