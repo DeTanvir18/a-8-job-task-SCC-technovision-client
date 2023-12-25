@@ -30,9 +30,10 @@ const UpdateTask = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            Navigate('/dashboard');
         }
         reset();
-        Navigate('/dashboard');
+        // Navigate('/dashboard');
     }
 
 
