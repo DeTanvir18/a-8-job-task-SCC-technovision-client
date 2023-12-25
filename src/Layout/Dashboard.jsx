@@ -5,16 +5,20 @@ import { FaTasks } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { motion } from 'framer-motion';
+import useTasks from "../hooks/useTasks";
 
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
+    const [ , tasks] = useTasks();
+    const myTasks = tasks.filter(task => task.email === user.email);
+
     return (
         <div>
             <Helmet>
                 <title>Dashboard</title>
             </Helmet>
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row">
                 <div className="min-h-screen bg-sky-400">
                     <div className="w-64">
                         <div className="flex flex-col justify-center items-center text-white mx-0 lg:mx-2 mt-5 space-y-3 p-2 md:p-4">
@@ -29,7 +33,7 @@ const Dashboard = () => {
                                     <h3><span className="font-bold"></span>{user?.email}</h3>
                                 </div>
                                 <div className="space-y-1">
-                                    {/* <h3><span className="font-bold text-sky-500">Total Tasks: </span>{adminMeals.length}</h3> */}
+                                    <h3><span className="font-bold">Total Tasks: </span>{myTasks.length}</h3>
                                 </div>
                                 <div className="space-y-1">
                                     <span className="flex items-center font-semibold text-md py-1 rounded-md"><FaIdBadge />  General</span>

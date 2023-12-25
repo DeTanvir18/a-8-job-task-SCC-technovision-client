@@ -6,12 +6,16 @@ import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle";
 import { FaTasks } from "react-icons/fa";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useTasks from "../../../hooks/useTasks";
 
 
 const AddTask = () => {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = useAxiosPublic();
+    const [refetch, ] = useTasks();
 
 
     const onSubmit = async (data) => {
@@ -26,13 +30,8 @@ const AddTask = () => {
         const newTaskRes = await axiosPublic.post('/tasks', newTask);
         if (newTaskRes.data.insertedId) {
             reset();
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: `${data.title} is added to the tasks.`,
-                showConfirmButton: false,
-                timer: 1500
-            });
+            refetch();
+            toast (`${data.title} is added to the tasks.`);
         }
     }
 
@@ -98,6 +97,7 @@ const AddTask = () => {
                     </div>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };

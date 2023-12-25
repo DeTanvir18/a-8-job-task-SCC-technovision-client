@@ -1,36 +1,24 @@
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import SectionTitle from "../../../components/SectionTitle";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import { FaDeleteLeft } from "react-icons/fa6";
-import { BiBookAdd } from "react-icons/bi";
 import { BallTriangle } from "react-loader-spinner";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import TaskCard from "../TaskCard/TaskCard";
+import useTasks from "../../../hooks/useTasks";
 
 
 const MyTasks = () => {
     const { user } = useContext(AuthContext);
+    const [refetch, tasks] = useTasks();
     const axiosPublic = useAxiosPublic();
-    const [tasks, setTasks] = useState([]);
     const myTasks = tasks.filter(task => task.email === user.email);
     const toDo = myTasks.filter(task => task.status === "to-do");
     const ongoing = myTasks.filter(task => task.status === "ongoing");
     const completed = myTasks.filter(task => task.status === "completed");
-    console.log(toDo);
-    console.log(ongoing);
-    console.log(completed);
-
-
-    useEffect(() => {
-        fetch('http://localhost:5000/tasks')
-            .then(res => res.json())
-            .then(data => {
-                setTasks(data);
-            })
-    }, [])
-
 
 
 
@@ -46,25 +34,16 @@ const MyTasks = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const res = await axiosPublic.delete(`/tasks/${task._id}`);
-                // console.log(res.data);
+                refetch();
                 if (res.data.deletedCount > 0) {
-                    // refetch to update the ui
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: `${task.title} has been deleted`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                    toast(`${task.title} Task successfully Deleted!`);
                 }
-
-
             }
         });
     }
 
     return (
-        <div className="w-full lg:w-1/2 mx-auto">
+        <div className="w-full lg:w-2/3 mx-auto">
             <SectionTitle heading="Tasks"></SectionTitle>
             <hr />
             <hr />
@@ -85,6 +64,8 @@ const MyTasks = () => {
                                             <th>#</th>
                                             <th>Task</th>
                                             <th>Status</th>
+                                            <th>Priority</th>
+                                            <th>Deadline</th>
                                             <th>Description</th>
                                             <th>Update</th>
                                             <th>Delete</th>
@@ -93,22 +74,12 @@ const MyTasks = () => {
                                     <tbody>
                                         {/* table rows */}
                                         {
-                                            toDo.map((task, index) => <tr
+                                            toDo.map((task, index) => <TaskCard
                                                 key={task._id}
-                                            >
-                                                <td className="font-extrabold text-xl">{index + 1}</td>
-                                                <td>{task.title}</td>
-                                                <td className={task.status === 'to-do' ? "font-bold text-red-500" : "text-green-500 font-bold"}>{task.status}</td>
-                                                <td className="text-start">{task.description}</td>
-                                                <td>
-                                                    <Link to={`/dashboard/updatetask/${task._id}`}>
-                                                        <button className="btn btn-ghost text-2xl text-white bg-green-500 px-2" ><BiBookAdd></BiBookAdd></button>
-                                                    </Link>
-                                                </td>
-                                                <td>
-                                                    <button onClick={() => handleDeleteTask(task)} className="btn btn-ghost text-2xl text-white bg-red-500 px-2" ><FaDeleteLeft /></button>
-                                                </td>
-                                            </tr>)
+                                                index={index}
+                                                task={task}
+                                                handleDeleteTask={handleDeleteTask}
+                                            ></TaskCard>)
                                         }
                                     </tbody>
                                 </table>
@@ -145,6 +116,8 @@ const MyTasks = () => {
                                             <th>#</th>
                                             <th>Task</th>
                                             <th>Status</th>
+                                            <th>Priority</th>
+                                            <th>Deadline</th>
                                             <th>Description</th>
                                             <th>Update</th>
                                             <th>Delete</th>
@@ -153,22 +126,12 @@ const MyTasks = () => {
                                     <tbody>
                                         {/* table rows */}
                                         {
-                                            ongoing.map((task, index) => <tr
+                                            ongoing.map((task, index) => <TaskCard
                                                 key={task._id}
-                                            >
-                                                <td className="font-extrabold text-xl">{index + 1}</td>
-                                                <td>{task.title}</td>
-                                                <td className={task.status === 'to-do' ? "font-bold text-red-500" : "text-green-500 font-bold"}>{task.status}</td>
-                                                <td className="text-start">{task.description}</td>
-                                                <td>
-                                                    <Link to={`/dashboard/updatetask/${task._id}`}>
-                                                        <button className="btn btn-ghost text-2xl text-white bg-green-500 px-2" ><BiBookAdd></BiBookAdd></button>
-                                                    </Link>
-                                                </td>
-                                                <td>
-                                                    <button onClick={() => handleDeleteTask(task)} className="btn btn-ghost text-2xl text-white bg-red-500 px-2" ><FaDeleteLeft /></button>
-                                                </td>
-                                            </tr>)
+                                                index={index}
+                                                task={task}
+                                                handleDeleteTask={handleDeleteTask}
+                                            ></TaskCard>)
                                         }
                                     </tbody>
                                 </table>
@@ -193,47 +156,39 @@ const MyTasks = () => {
                 }
                 {
                     completed.length ?
-                    <div>
-                    <hr />
-                    <hr />
-                    <h3 className="text-xl mb-2 text-center">Completed</h3>
-                    <div className="overflow-x-auto mb-28">
-                        <table className="table border-4">
-                            {/* head */}
-                            <thead className="font-bold text-black border-b-4 bg-pink-200">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Task</th>
-                                    <th>Status</th>
-                                    <th>Description</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {/* table rows */}
-                                {
-                                    completed.map((task, index) => <tr
-                                        key={task._id}
-                                    >
-                                        <td className="font-extrabold text-xl">{index + 1}</td>
-                                        <td>{task.title}</td>
-                                        <td className={task.status === 'to-do' ? "font-bold text-red-500" : "text-green-500 font-bold"}>{task.status}</td>
-                                        <td className="text-start">{task.description}</td>
-                                        <td>
-                                            <Link to={`/dashboard/updatetask/${task._id}`}>
-                                                <button className="btn btn-ghost text-2xl text-white bg-green-500 px-2" ><BiBookAdd></BiBookAdd></button>
-                                            </Link>
-                                        </td>
-                                        <td>
-                                            <button onClick={() => handleDeleteTask(task)} className="btn btn-ghost text-2xl text-white bg-red-500 px-2" ><FaDeleteLeft /></button>
-                                        </td>
-                                    </tr>)
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                        <div>
+                            <hr />
+                            <hr />
+                            <h3 className="text-xl mb-2 text-center">Completed</h3>
+                            <div className="overflow-x-auto mb-28">
+                                <table className="table border-4">
+                                    {/* head */}
+                                    <thead className="font-bold text-black border-b-4 bg-pink-200">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Task</th>
+                                            <th>Status</th>
+                                            <th>Priority</th>
+                                            <th>Deadline</th>
+                                            <th>Description</th>
+                                            <th>Update</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* table rows */}
+                                        {
+                                            completed.map((task, index) => <TaskCard
+                                                key={task._id}
+                                                index={index}
+                                                task={task}
+                                                handleDeleteTask={handleDeleteTask}
+                                            ></TaskCard>)
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                         :
                         <div className="flex w-full flex-col justify-center items-center">
                             <p className="mt-16 mb-2 text-center text-2xl font-bold mx-auto">You have no Completed Task to Display.</p>
@@ -252,6 +207,7 @@ const MyTasks = () => {
                         </div>
                 }
             </div>
+            <ToastContainer />
         </div>
     );
 };

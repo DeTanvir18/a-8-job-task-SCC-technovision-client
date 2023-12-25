@@ -25,9 +25,8 @@ const Login = () => {
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 reset();
-                // for [sweet-alert] on login
                 Swal.fire({
                     title: 'User successfully logged in',
                     showClass: {

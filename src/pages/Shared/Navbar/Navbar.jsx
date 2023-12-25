@@ -4,12 +4,15 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaTimes } from "react-icons/fa";
 import { CiMenuFries } from "react-icons/ci";
+import useTasks from "../../../hooks/useTasks";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
+    const [ , tasks] = useTasks();
+    const myTasks = tasks.filter(task => task.email === user.email);
 
 
 
@@ -27,13 +30,13 @@ const Navbar = () => {
 
     const navLinks = <>
         <div className="lg:hidden block absolute w-full top-16 right-0 left-0 bg-slate-600 transition">
-            <ul className="text-center text-xl p-20">
-                <NavLink spy={true} smooth={true} to="/"><li className="my-4 py-4 border-b border-slate-400 hover:bg-slate-400 hover:rounded">Home</li></NavLink>
-                <NavLink spy={true} smooth={true} ><li className="my-4 py-4 border-b border-slate-400 hover:bg-slate-400 hover:rounded">About</li></NavLink>
+            <ul className="text-center text-lg">
+                <NavLink spy={true} smooth={true} to="/"><li className="my-1 py-1 border-b border-slate-400 hover:bg-slate-400 hover:rounded">Home</li></NavLink>
+                <NavLink spy={true} smooth={true} ><li className="my-1 py-1 border-b border-slate-400 hover:bg-slate-400 hover:rounded">About</li></NavLink>
                 {
                     user &&
                     <NavLink spy={true} smooth={true} to="/dashboard">
-                        <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard</li>
+                        <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard<span className="text-pink-500"> +{myTasks.length}</span></li>
                     </NavLink>
                 }
                 {
@@ -53,7 +56,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-black text-white">
+        <nav className="bg-black text-white mb-40">
             <div className="h-10vh max-w-[1480px] mx-auto flex justify-between z-50 px-4 lg:py-5 py-4 border-b border-slate-400">
                 <div className="flex items-center flex-1">
                     <NavLink to="/">
@@ -67,13 +70,13 @@ const Navbar = () => {
                             <NavLink spy={true} smooth={true} to="/">
                                 <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Home</li>
                             </NavLink>
-                            <NavLink spy={true} smooth={true} to="About">
+                            <NavLink spy={true} smooth={true}>
                                 <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">About</li>
                             </NavLink>
                             {
                                 user &&
                                 <NavLink spy={true} smooth={true} to="/dashboard">
-                                    <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard</li>
+                                    <li className="hover:text-fuchsia-500 transition border-b-2 border-slate-600 hover:border-fuchsia-600 cursor-pointer">Dashboard<span className="text-pink-500"> +{myTasks.length}</span></li>
                                 </NavLink>
                             }
                             {

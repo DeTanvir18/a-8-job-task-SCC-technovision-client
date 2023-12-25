@@ -44,7 +44,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/updatetask/:id',
                 element: <UpdateTask></UpdateTask>,
-                loader: ({ params }) => fetch(`http://localhost:5000/taskdetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://a8-job-task-scc-technovision-server.vercel.app/taskdetails/${params.id}`)
             },
         ]
     },
